@@ -1,0 +1,119 @@
+import mysql.connector
+import random
+
+#alkumuuttujat:
+health = int(0)
+player = "Player"
+current_weather = "Good"
+input_s_true = False
+exit_info = False
+printed_start = 0
+game_id = 1
+start_airport = "xxx"
+end_airport = "yyy"
+current_airport = start_airport
+
+yhteys = mysql.connector.connect(
+         host='127.0.0.1',
+         port= 3306,
+         database='flight_game',
+         user='root',
+         password='---',
+         autocommit=True
+        )
+
+     sql_airports = """
+    SELECT ident, name, type FROM airport
+    WHERE iso_country = %s AND type IN ('large_airport')
+    ORDER BY RAND();
+    """
+ cursor = yhteys.cursor(dictionary=True)
+    cursor.execute(sql_airports, (get_the_airport['iso_country'],))
+    airports = cursor.fetchall()
+
+#PITÄÄ SPESIFIÖIDÄ VIEL TÄSSÄ NE MAAT MUT TEEN SEN MYÖHEMMIN, KUITENKI TÄÄ HYÖDYLLINEN FUNKTIO KU TARVITAAN JOKU ALOTUSMAA
+def get_start_airport():
+    global start_airport
+    # Hakee tietokannasta satunnaisen aloitusmaan lentokentän
+    sql_start = """
+    SELECT ident, name, iso_country, latitude_deg, longitude_deg FROM airport
+    WHERE continent = 'EU' AND type IN ('large_airport')
+    ORDER BY RAND() LIMIT 1;
+    """
+    cursor = yhteys.cursor(dictionary=True)
+    cursor.execute(sql_start)
+    start_airport = cursor.fetchone()
+
+    return start_airport
+
+def create_game(cur_airport, p_name, a_ports):
+    # Hakee ICAO-koodin lentokentältä
+    icao_code = cur_airport['ident']  # käytetään ICAO-koodia
+
+    sql = "INSERT INTO game (location, screen_name) VALUES (%s, %s);"
+    cursor = yhteys.cursor(dictionary=True)
+    cursor.execute(sql, (icao_code, p_name))  # käytetään ICAO-koodia sijainnin sijasta
+    g_id = cursor.lastrowid
+    # Muista commit datan tallentamiseksi
+    yhteys.commit()
+
+    return g_id
+
+def update_location(icao, g_id):
+    sql = '''UPDATE game SET location = %s WHERE id = %s'''
+    cursor = yhteys.cursor(dictionary=True)
+
+    try:
+        # Ensure that `icao` is a string
+        if isinstance(icao, dict):
+          icao = icao['ident']  # mikä key tarvitaankaa
+
+        cursor.execute(sql, (icao, g_id))
+        yhteys.commit()  # Commit changes to the database
+    except Exception as e:
+        print(f"Error updating location: {e}")
+
+def get_player_location(g_id):
+    sql = '''SELECT location FROM game WHERE id = %s'''
+    cursor = yhteys.cursor(dictionary=True)
+    cursor.execute(sql, (g_id,))
+    result = cursor.fetchone()
+    return result['location']
+
+# Näytä sijainti pelissä
+current_airport = get_player_location(game_id)
+          
+  ###TÄSTÄ SITTE TEHÄÄN RANDOM EVENTIT
+def random_event_1()
+          return
+def random_event_2()
+          return
+def random_event_3()
+          return
+def random_event_4()
+          return
+def random_event_5()
+          return
+
+###JA TÄHÄN TASKS
+def random_task_1()
+          return
+def random_task_2()
+          return
+def random_task_3()
+          return
+def random_task_4()
+          return
+def random_task_5()
+          return
+def random_task_6()
+          return
+def random_task_7()
+          return
+def random_task_8()
+          return
+def random_task_9()
+          return
+def random_task_10()
+          return
+          
