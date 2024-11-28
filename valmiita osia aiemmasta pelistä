@@ -4,7 +4,6 @@ import random
 #alkumuuttujat:
 health = int(0)
 player = "Player"
-current_weather = "Good"
 input_s_true = False
 exit_info = False
 printed_start = 0
