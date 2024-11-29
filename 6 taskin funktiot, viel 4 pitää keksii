@@ -1,0 +1,180 @@
+import random
+
+player = {
+    "name": "...",
+    "health": 0,
+    "current_location": "FI",
+    "collected_antidotes": []
+}
+
+
+#1
+def find_clue_on_board():
+    print("\nYou find a mysterious board in the airport lounge.")
+    print("It has multiple clues written in code.")
+    print("You need to decipher the code to figure out the antidote location.")
+    clues = ["Decode the message", "Look for hidden symbols", "Consult the airport staff"]
+    clue_choice = random.choice(clues)
+    print(f"The clue you need to solve: '{clue_choice}'")
+
+    print("\nHow will you proceed?")
+    print("1. Decode the message yourself")
+    print("2. Look for hidden symbols around the board")
+    print("3. Ask the airport staff for help")
+    try:
+        player_choice = int(input("\nChoose your action (1, 2, 3): "))
+        if player_choice == 1:
+            print("You successfully decode the message and discover the antidote location!")
+            return True
+        elif player_choice == 2:
+            print("You find some hidden symbols which lead you to the antidote!")
+            return True
+        else:
+            print("Invalid choice. Try again.")
+            return False
+    except ValueError:
+        print("Invalid input. Try again.")
+        return False
+
+#2
+def help_an_airport_mechanic():
+    print("\nYou notice an airport mechanic struggling to repair a critical system.")
+    print("You decide to help them out with the tools and expertise you have.")
+    print("They thank you and offer you a choice of rewards.")
+    reward = random.choice(["a spare part", "a tool kit", "a hint to find the antidote"])
+
+    print(f"\nThe mechanic offers you {reward}.")
+    print("\nDo you want to accept the reward?")
+    print("1. Yes, I'll take it.")
+    print("2. No, I'd rather not.")
+
+    try:
+        player_choice = int(input("\nChoose an option (1, 2): "))
+        if player_choice == 1:
+            if reward == "a spare part":
+                print("You fix part of the airport's equipment and gain access to a hidden area with an antidote!")
+            elif reward == "a tool kit":
+                print("You gain access to a special tool kit that helps you identify the antidote's location!")
+            elif reward == "a hint to find the antidote":
+                print("The mechanic gives you a map that leads directly to an antidote!")
+            return True
+        elif player_choice == 2:
+            print("You decline the reward, but you feel good about helping the mechanic.")
+            return False
+        else:
+            print("Invalid choice. Try again.")
+            return False
+    except ValueError:
+        print("Invalid input. Try again.")
+        return False
+
+#3
+def solve_a_broken_luggage_machine():
+    print("\nYou notice that the airport's luggage sorting system is malfunctioning.")
+    print("The line is getting longer, and passengers are frustrated.")
+    print("You decide to step in and fix the problem.")
+
+    print("\nWhat will you do?")
+    print("1. Try to fix the mechanical issue")
+    print("2. Work on the software issue")
+    print("3. Ask the airport staff for help")
+
+    try:
+        player_choice = int(input("\nChoose an option (1, 2, 3): "))
+        if player_choice == 1:
+            print("You fix the mechanical issue and the system starts working again. You gain access to an antidote!")
+            return True
+        elif player_choice == 2:
+            print("You repair the software and the luggage system operates smoothly. You find a hidden antidote!")
+            return True
+        elif player_choice == 3:
+            print("You ask for help, and the staff give you a map with an antidote location.")
+            return True
+        else:
+            print("Invalid choice. Try again.")
+            return False
+    except ValueError:
+        print("Invalid input. Try again.")
+        return False
+
+#4
+def participate_in_a_quiz():
+    print("\nYou come across a travel trivia quiz being held at the airport.")
+    print("The winner gets a special prize. You decide to join and answer some questions.")
+
+    questions = [
+        ("What is the capital of Germany?", "Berlin"),
+        ("Which country is famous for the Eiffel Tower?", "France"),
+        ("Where is megis from?", "Finland")
+    ]
+
+    question, correct_answer = random.choice(questions)
+    print(f"\nQuestion: {question}")
+    player_answer = input("\nYour answer: ")
+
+#lower tekee niin että vaikka pelaaja kirjottais esim berlin tai bERLIN nii se vastaus ois silti oikein
+    if player_answer.lower() == correct_answer.lower():
+        print("Correct! You win the prize, which includes an antidote!")
+        return True
+    else:
+        print("Incorrect answer. Better luck next time!")
+        return False
+
+#5
+def help_a_lost_child():
+    print("\nA child approaches you at the airport, looking lost and scared.")
+    print("They ask you to help them find their parents. You decide to assist them.")
+
+    print("\nWhere will you look for the parents?")
+    print("1. The lost and found section")
+    print("2. The waiting area near the gates")
+    print("3. Ask the airport staff to make an announcement")
+
+    try:
+        player_choice = int(input("\nChoose an option (1, 2, 3): "))
+        if player_choice == 1:
+            print("You find the parents in the lost and found section. They give you an antidote in gratitude!")
+            return True
+        elif player_choice == 2:
+            print("The parents are waiting in the lounge. They thank you and give you an antidote!")
+            return True
+        elif player_choice == 3:
+            print(
+                "The staff help make an announcement. The parents come to pick up the child, and they give you an antidote!")
+            return True
+        else:
+            print("Invalid choice. Try again.")
+            return False
+    except ValueError:
+        print("Invalid input. Try again.")
+        return False
+
+#6
+def retrieve_lost_passenger_documents():
+    print("\nA passenger approaches you, looking stressed. They've lost their important travel documents.")
+    print("You decide to help them search for the missing items.")
+
+    print("\nWhere will you search for the documents?")
+    print("1. The luggage storage area")
+    print("2. The information desk")
+    print("3. The airport bathrooms")
+
+    try:
+        player_choice = int(input("\nChoose an option (1, 2, 3): "))
+        if player_choice == 1:
+            print(
+                "You find the documents hidden in the luggage storage area. The passenger rewards you with an antidote!")
+            return True
+        elif player_choice == 2:
+            print(
+                "The staff help you search the desk and find the documents. The passenger thanks you with an antidote!")
+            return True
+        elif player_choice == 3:
+            print("You find the documents in a restroom. The relieved passenger gives you an antidote!")
+            return True
+        else:
+            print("Invalid choice. Try again.")
+            return False
+    except ValueError:
+        print("Invalid input. Try again.")
+        return False
