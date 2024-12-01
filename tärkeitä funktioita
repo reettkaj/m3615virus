@@ -1,0 +1,77 @@
+import random
+
+# Tapahtumien lista
+events = [
+    {
+        "description": "You feel someone staring at you. An elderly woman comes to you and offers you an apple. That apple really looks delicious.",
+        "choices": {
+            "success": "After eating the apple, you feel refreshed and full of energy.",
+            "failure": "After eating the apple, you start feeling sick. You must get to the plane."
+        }
+    },
+    {
+        "description": "You find a wallet lying near a vending machine. You should probably check that out.",
+        "choices": {
+            "success": "You return the wallet to its owner, who rewards you with gratitude and a snack.",
+            "failure": "While picking up the wallet, security questions your actions, causing unnecessary stress."
+        }
+    },
+    {
+        "description": "A staff member offers you a cup of coffee for free. A cup of coffee would do good for ya, no?",
+        "choices": {
+            "success": "The coffee is energizing and warms you up, making you feel great.",
+            "failure": "The coffee is too strong, making you anxious."
+        }
+    },
+    {
+        "description": "Attention! There is a storm, and it is unsafe to travel for the next 2 hours.",
+        "choices": {
+            "success": "Wait for the storm to pass. You have to wait, but you were able to take a little nap, which helped boost your energy a bit.",
+            "failure": "Travel anyway, and get lost which causes a huge delay and you lose health."
+        }
+    },
+    {
+        "description": "Someone looks at you and compliments your outfit.",
+        "choices": {
+            "success": "You feel great and thank the person, returning the same compliment to them.",
+            "failure": "You feel like they are mocking you, and you get offended. You leave without a word."
+        }
+    }
+]
+
+def random_event(events):
+    if not events:
+        return "No more events left!"
+
+    # Valitaan satunnainen tapahtuma
+    index = random.randint(0, len(events) - 1)
+    event = events.pop(index)  # Poistetaan tapahtuma, jotta se ei toistu, koska me halutaan yhen pelin aikana ettei tuu kahta kertaa samaa eventtii
+
+    print(event["description"])  # Näytetään tapahtuman kuvaus pelaajalle
+    player_choice = input("Your choice (yes/no): ").strip().lower()
+
+    if player_choice == "yes":
+        # Pelaaja valitsi osallistua; arvotaan lopputulos
+        outcome = random.choice(["success", "failure"])
+        result_message = f"Outcome: {event['choices'][outcome]}"
+    elif player_choice == "no":
+        # Pelaaja valitsi olla osallistumatta
+        result_message = "You chose not to participate in this event. Your health remains the same."
+
+    return result_message
+
+# Funktio, joka lisää uuden maan ja tähän tarvii kyl sit tietokantaseurauksen et meil olis siel tietokannas joku juttu johon lisääntyy nää maat
+    def visit_country(player_data, country):
+      if country not in player_data["countries_visited"]:
+        player_data["countries_visited"].append(country)
+    completed = len(player_data["countries_visited"]) >= 9
+    return player_data, completed
+
+    def display_leaderboard(leaderboard):
+    """Prints the leaderboard with player rankings."""
+    print("Leaderboard:")
+    sorted_board = sorted(leaderboard, key=lambda x: (-x["health"], x["time"]))
+    for rank, player in enumerate(sorted_board, 1):
+        print(f"{rank}. {player['name']} - Health: {player['health']} - Time: {player['time']} mins")
+
+  
