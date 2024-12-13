@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Arrays to store all events and tasks
     let allEvents;
     let allTasks;
-    const BACKEND_URL = "http://127.0.0.1:5000";  // URL for the Flask backend
+    const BACKEND_URL = "http://127.0.0.1:5000";  // URL for the Flask 
 
     async function fetchAPIData(endpoint) {
         try {
