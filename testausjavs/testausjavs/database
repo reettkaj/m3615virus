@@ -1,6 +1,6 @@
 import mysql.connector
 import json
-# Database connection details
+# Database connection 
 db_config = {
     "host": "localhost",
     "user": "root",
@@ -8,7 +8,7 @@ db_config = {
     "autocommit": True
 }
 
-# Events and tasks data
+
 events = [
     {
         "id": 1,
@@ -103,8 +103,8 @@ tasks = [
         "id": 1,
         "name": "Find Clue on Board",
         "description": "You find a mysterious board in the airport lounge. It has multiple clues written in code. Choose the correct code to find the antidote.",
-        "reward_health": 1,  # Adding reward_health
-        "penalty_health": 0,  # Adding penalty_health
+        "reward_health": 1, 
+        "penalty_health": 0,  
         "choices": [
             {"option": "X32YZ", "text": "Choose X32YZ"},
             {"option": "M3615", "text": "Choose M3615"},
@@ -120,8 +120,8 @@ tasks = [
         "id": 2,
         "name": "Help an Airport Mechanic",
         "description": "You notice an airport mechanic struggling to repair an important system. They ask you to help solve a problem before the system overheats. You have 3 attempts to guess the right fix.",
-        "reward_health": 1,  # Adding reward_health
-        "penalty_health": 0,  # Adding penalty_health
+        "reward_health": 1, 
+        "penalty_health": 0, 
         "choices": [
             {"option": "1", "text": "Try number 1 to fix the system"},
             {"option": "2", "text": "Try number 2 to fix the system"},
@@ -139,8 +139,8 @@ tasks = [
         "id": 3,
         "name": "Solve a Broken Luggage Machine",
         "description": "The airport's luggage sorting system is malfunctioning. The line is getting longer, and passengers are frustrated. You decide to step in and fix the problem.",
-        "reward_health": 1,  # Adding reward_health
-        "penalty_health": 0,  # Adding penalty_health
+        "reward_health": 1, 
+        "penalty_health": 0,  
         "choices": [
             {"option": "1", "text": "Try to fix the mechanical issue"},
             {"option": "2", "text": "Work on the software issue"},
@@ -157,8 +157,8 @@ tasks = [
         "id": 5,
         "name": "Help a Lost Child",
         "description": "A child approaches you at the airport, looking lost and scared. They ask you to help them find their parents. You decide to assist them.",
-        "reward_health": 1,  # Adding reward_health
-        "penalty_health": 0,  # Adding penalty_health
+        "reward_health": 1, 
+        "penalty_health": 0, 
         "choices": [
             {"option": "1", "text": "Look in the lost and found section"},
             {"option": "2", "text": "Look near the gates"},
@@ -174,8 +174,8 @@ tasks = [
         "id": 6,
         "name": "Retrieve Lost Passenger Documents",
         "description": "A passenger approaches you, looking stressed. They've lost their documents. You decide to help by following a series of clues.",
-        "reward_health": 1,  # Adding reward_health
-        "penalty_health": 0,  # Adding penalty_health
+        "reward_health": 1,  
+        "penalty_health": 0, 
         "choices": [
             {"option": "1", "text": "Look in the luggage storage area"},
             {"option": "2", "text": "Look in the airport lounge"},
@@ -191,8 +191,8 @@ tasks = [
         "id": 7,
         "name": "Navigate Power Outage",
         "description": "The airport experiences a sudden power outage. You must navigate to safety.",
-        "reward_health": 1,  # Adding reward_health
-        "penalty_health": 0,  # Adding penalty_health
+        "reward_health": 1,  
+        "penalty_health": 0,  
         "choices": [
             {"option": "1", "text": "Choose the main hallway"},
             {"option": "2", "text": "Choose the emergency stairs"},
@@ -208,8 +208,8 @@ tasks = [
         "id": 8,
         "name": "Find Hidden Message",
         "description": "You overhear a cryptic message being announced in the airport. It might lead to an antidote!",
-        "reward_health": 1,  # Adding reward_health
-        "penalty_health": 0,  # Adding penalty_health
+        "reward_health": 1,  
+        "penalty_health": 0,  
         "choices": [
             {"option": "1", "text": "Answer: All of them"},
             {"option": "2", "text": "Answer: February"},
@@ -225,8 +225,8 @@ tasks = [
         "id": 9,
         "name": "Pharmacy Backroom Task",
         "description": "As you sit in the airport café, you overhear two employees whispering: 'There’s an antidote in the pharmacy backroom near Gate 12. It’s hidden with the other experimental meds.' You decide to sneak in to retrieve it.",
-        "reward_health": 1,  # Adding reward_health
-        "penalty_health": 0,  # Adding penalty_health
+        "reward_health": 1,  
+        "penalty_health": 0,  
         "choices": [
             {"option": "sneak", "text": "Sneak into the backroom"}
         ],
@@ -238,8 +238,8 @@ tasks = [
         "id": 10,
         "name": "Candy Deal Task",
         "description": "You are sitting in the airport lounge, and suddenly, you spot something shiny under a bench. It's an antidote! Just as you reach for it, a child rushes over and snatches it away. The child looks at you and says, 'If you want this antidote, you have to buy me candy first! I want the biggest candy bar in the store!'",
-        "reward_health": 1,  # Adding reward_health
-        "penalty_health": 0,  # Adding penalty_health
+        "reward_health": 1, 
+        "penalty_health": 0, 
         "choices": [
             {"option": "1", "text": "Agree to buy the candy and go to the store."},
             {"option": "2", "text": "Refuse and try to take the antidote from the child."},
@@ -253,7 +253,6 @@ tasks = [
     }
 ]
 
-# Connect to MySQL
 try:
     connection = mysql.connector.connect(**db_config)
     cursor = connection.cursor()
@@ -262,7 +261,6 @@ except mysql.connector.Error as err:
     print(f"Error: {err}")
     exit(1)
 
-# Recreate the `miafe` database
 try:
     cursor.execute("DROP DATABASE IF EXISTS miafe;")
     cursor.execute("CREATE DATABASE miafe;")
@@ -355,7 +353,7 @@ for sql in create_tables_sql:
         print(f"Error creating table: {err}")
         exit(1)
 
-# Populate the `event` table
+
 try:
     for event in events:
         cursor.execute(
@@ -377,7 +375,7 @@ except mysql.connector.Error as err:
     print(f"Error inserting event data: {err}")
     exit(1)
 
-# Populate the `task` table
+
 try:
     for task in tasks:
         cursor.execute(
@@ -421,7 +419,7 @@ try:
 except mysql.connector.Error as err:
     print(f"Error inserting leaderboard data: {err}")
     exit(1)
-# Close the connection
+
 cursor.close()
 connection.close()
 print("Database setup and population completed successfully.")
