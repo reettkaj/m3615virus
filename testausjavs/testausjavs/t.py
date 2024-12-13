@@ -13,13 +13,11 @@ db_config = {
     "database": "miafe"
 }
 
-# Sample leaderboard data
 Leaderboard = [
     {'name': 'Player1', 'health': 100,'time':20},
     {'name': 'Player2', 'health': 80,'time':50},
 ]
 
-# Sample random events/tasks
 events_and_tasks = [
     {'name': 'Rescue Mission', 'description': 'Save the citizens trapped in a building!'},
     {'name': 'Antidote Search', 'description': 'Find the antidote hidden in the forest.'},
@@ -35,27 +33,23 @@ def get_db_connection():
         print(f"Error: {err}")
         return None
 
-# Start Game Endpoint
+# Start Game 
 @app.route('/start_game', methods=['POST'])
 def start_game():
-    # Logic to start the game, for example resetting the game state
+    # to start the game
     game_state = {"health": 15, "antidotes": 0}
     return jsonify(game_state)
 
-# Leaderboard Endpoint
+# Leaderboard 
 @app.route('/leaderboard', methods=['GET'])
 def get_leaderboard():
-    # return jsonify(Leaderboard)
     try:
-        # Connect to the database
         connection = get_db_connection()
         cursor = connection.cursor()
 
-        # Fetch the leaderboard data from the database
         cursor.execute("SELECT * FROM leaderboard ORDER BY healthbar_final DESC, time ASC")
         leaderboard_data = cursor.fetchall()
 
-        # Format the results into a list of dictionaries
         leaderboard = []
         for row in leaderboard_data:
             leaderboard.append({
@@ -65,17 +59,14 @@ def get_leaderboard():
                 "time": row[3]
             })
 
-        # Close the connection
         cursor.close()
         connection.close()
 
         return jsonify({"leaderboard": leaderboard}), 200
 
     except Error as e:
-        # Handle MySQL errors
         return jsonify({"error": str(e)}), 500
 
-# API Endpoint to get events 
 @app.route('/events', methods=['GET'])
 def get_events():
     """Fetch all events from the database."""
@@ -94,7 +85,7 @@ def get_events():
     finally:
         cursor.close()
         connection.close()
-# API Endpoint to get etasks
+
 @app.route('/tasks', methods=['GET'])
 def get_tasks():
     """Fetch all tasks from the database."""
@@ -113,41 +104,34 @@ def get_tasks():
     finally:
         cursor.close()
         connection.close()
-# Update leaderboard (post game result)
+
 @app.route('/update_leaderboard', methods=['POST'])
 def update_leaderboard():
     try:
-        # Get the data from the POST request
         player_data = request.get_json()
         player_id = player_data['name']
-        health = player_data['health']  # Assuming health is passed as a value
+        health = player_data['health']  
         time_spent = player_data['time']
 
-        # Connect to the database
         connection = get_db_connection()
         cursor = connection.cursor()
 
-        # Insert the data into the leaderboard table
         cursor.execute("""
             INSERT INTO leaderboard (player_id, healthbar_final, time) 
             VALUES (%s, %s, %s)
         """, (player_id, health, time_spent))
 
-        # Commit changes to the database
         connection.commit()
 
-        # Close the connection
         cursor.close()
         connection.close()
 
-        # Return a success message
         return jsonify({"message": "Leaderboard updated successfully!"}), 200
 
     except Error as e:
-        # Handle MySQL errors
+
         return jsonify({"error": str(e)}), 500
 
-# Game-related functions
 def get_airport():
     sql = """SELECT iso_country, ident, name, type, latitude_deg, longitude_deg
              FROM airport
@@ -206,7 +190,6 @@ def show_menu():
         if choice == "1":
             username = input("Enter your name: ")
             start_game_story()
-            # Here we can call other game logic like traveling, events, etc.
         elif choice == "2":
             display_leaderboard()
         elif choice == "3":
@@ -214,7 +197,7 @@ def show_menu():
         else:
             print("\nInvalid option! Please choose again.")
 
-# Leaderboard display
+
 def display_leaderboard():
     try:
         conn = get_db_connection()
