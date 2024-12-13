@@ -1,0 +1,703 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 4rem;
+  text-shadow: 3px 3px #1a1a40;
+  margin-bottom: 1rem;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Centers the content */
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  /* Adds a semi-transparent dark background */
+  border-radius: 10px;
+  /* Rounds the corners */
+  text-align: center;
+}
+
+h1,
+p {
+  margin: 0;
+  font-size: 2rem;
+  color: white;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+button {
+  border: none;
+  border-radius: 25px;
+  padding: 15px 30px;
+  font-size: 18px;
+  color: white;
+  background-color: #114552;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #114552;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.btn:hover {
+  background-color: #062730;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+
+/* Fix the leaderboard container to ensure everything stays inside */
+.leaderboard-container {
+  margin: 20px auto;
+  padding: 20px;
+  width: 90%;
+  /* Adjust to ensure it's responsive */
+  max-width: 600px;
+  /* Set a max width */
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  /* Enable scrolling if content overflows */
+}
+
+/* Fix the table to stay within its container */
+.leaderboard-table {
+  width: 100%;
+  /* Make the table take the full width of the container */
+  border-collapse: collapse;
+  table-layout: fixed;
+  /* Prevent cells from overflowing */
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  word-wrap: break-word;
+  /* Ensure text wraps within cells */
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.leaderboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+/* Styling the container */
+.name-entry-container {
+  margin: 20px auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 400px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Styling the label */
+.name-entry-container label {
+  display: block;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Styling the input */
+.name-entry-container input {
+  width: 90%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.name-entry-container input:focus {
+  border-color: #007bff;
+}
+
+/* Styling the button */
+.name-entry-container button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.name-entry-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Add some responsiveness */
+@media (max-width: 600px) {
+  .name-entry-container {
+    width: 90%;
+  }
+}
+
+/* Story container */
+.story-container {
+  margin: 50px auto;
+  padding: 20px;
+  max-width: 600px;
+  background-color: #f8f8ff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Title styling */
+.story-container h2 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Paragraph styling */
+.story-container p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.story-container p.good-luck {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2a7ae4;
+}
+
+/* Separator styling */
+.story-container .separator {
+  border: 0;
+  height: 1px;
+  background: #ddd;
+  margin: 20px auto;
+  width: 80%;
+}
+
+/* Button styling */
+.continue-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.continue-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Add some responsiveness */
+@media (max-width: 600px) {
+  .story-container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .story-container h2 {
+    font-size: 24px;
+  }
+
+  .story-container p {
+    font-size: 14px;
+  }
+}
+
+/* Cockpit container styling */
+.cockpit-container {
+  margin: 50px auto;
+  padding: 30px;
+  max-width: 500px;
+  background-color: #1e293b;
+  /* Dark navy background */
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
+  /* White text */
+}
+
+/* Title styling */
+.cockpit-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #00d4ff;
+  /* Bright cyan for the title */
+}
+
+/* Button container */
+.cockpit-actions {
+  margin-top: 20px;
+}
+
+/* Button styling */
+.cockpit-btn {
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(135deg, #00d4ff, #007bff);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cockpit-btn:hover {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  transform: scale(1.05);
+}
+
+.cockpit-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Add responsiveness */
+@media (max-width: 600px) {
+
+  .cockpit-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .cockpit-title {
+    font-size: 24px;
+  }
+
+  .cockpit-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+
+/* Map Section Container */
+.map-container {
+  padding: 30px;
+  max-width: 900px;
+  margin: 50px auto;
+  background-color: #eef6fc;
+  /* Light blue resembling a map */
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Title Styling */
+.map-title {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Grid Layout for Countries */
+.country-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  /* 5 columns per row */
+  gap: 15px;
+  /* Space between buttons */
+  padding: 20px;
+  justify-content: center;
+}
+
+/* Country Buttons */
+.country-btn {
+  padding: 15px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, #00796b, #004d40);
+  /* Teal gradient */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.country-btn:hover {
+  transform: scale(1.05);
+  /* Slight zoom on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+}
+
+.country-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Back Button */
+.map-back-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background: #0288d1;
+  /* Light blue for back button */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.map-back-btn:hover {
+  background: #0277bd;
+  /* Darker blue */
+  transform: translateY(-2px);
+}
+
+.map-back-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .map-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .country-grid {
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 columns per row on smaller screens */
+    gap: 10px;
+  }
+
+  .country-btn {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .map-back-btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+/* Styling for country buttons */
+.country-btn {
+  padding: 10px 15px;
+  margin: 5px;
+  background-color: #4CAF50;
+  /* Default button color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  display: inline-block;
+}
+
+/* Styling for visited countries */
+.country-btn.visited {
+  text-decoration: line-through;
+  /* Adds a line through the name */
+  background-color: #ccc;
+  /* Change the color of the button for visited countries */
+  color: #333;
+  /* Optional: change text color */
+}
+
+/* Styling for when the country is disabled */
+.country-btn:disabled {
+  cursor: not-allowed;
+  /* Make the cursor look inactive */
+  opacity: 0.6;
+  /* Make the button look faded */
+}
+
+.continue-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.continue-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.event-task-section {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.event-description {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Container for the choice buttons */
+.choice-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* Increased spacing between buttons */
+  margin-bottom: 20px;
+  /* Added margin below the choices */
+}
+
+/* Style for each choice button */
+.choice-btn {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px 0;
+  /* Adds vertical margin between buttons */
+}
+
+.choice-btn:hover {
+  background-color: #45a049;
+  /* Darken the button color on hover */
+}
+
+/* Style for the back button */
+.back-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #d32f2f;
+  /* Darken the back button color on hover */
+}
+
+/* Country Event Section Styling */
+.event-task-section {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+}
+
+/* Health Display Styling */
+.health-display {
+  margin-top: 20px;
+  padding: 10px;
+  background: linear-gradient(145deg, #6e7e7e, #3e4e4e);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  text-align: center;
+}
+
+#health-label {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+#health-bar {
+  width: 100%;
+  background-color: #ccc;
+  border-radius: 8px;
+  height: 20px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+}
+
+#health-progress {
+  background-color: #4caf50;
+  height: 100%;
+  border-radius: 8px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+/* Add some padding and rounded edges to the back button */
+#backToMapBtn {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #b92e04;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#backToMapBtn:hover {
+  background-color: #e64a19;
+}
+
+/* Game Over Screen */
+.game-over-screen {
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Dark translucent background */
+  color: white;
+  text-align: center;
+  padding: 50px;
+  border-radius: 10px;
+  width: 60%;
+  max-width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.game-over-screen h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.game-over-screen p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.game-over-screen button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 8px;
+  background-color: #008CBA;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.game-over-screen button:hover {
+  background-color: #006b8f;
+}
+
+/* Fade In Effect */
+.game-over-screen {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+.antidote-btn {
+  background-color: #4CAF50;
+  /* Green for use button */
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.antidote-btn:hover {
+  background-color: #45a049;
+  /* Darker green on hover */
+}
+
+#antidote-buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
