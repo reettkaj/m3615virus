@@ -25,12 +25,12 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* Centers the content */
+
   padding: 20px;
   background: rgba(0, 0, 0, 0.5);
-  /* Adds a semi-transparent dark background */
+
   border-radius: 10px;
-  /* Rounds the corners */
+ 
   text-align: center;
 }
 
@@ -77,35 +77,29 @@ button:active {
 }
 
 
-/* Fix the leaderboard container to ensure everything stays inside */
+
 .leaderboard-container {
   margin: 20px auto;
   padding: 20px;
   width: 90%;
-  /* Adjust to ensure it's responsive */
   max-width: 600px;
-  /* Set a max width */
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   overflow-x: auto;
-  /* Enable scrolling if content overflows */
 }
 
-/* Fix the table to stay within its container */
+
 .leaderboard-table {
   width: 100%;
-  /* Make the table take the full width of the container */
   border-collapse: collapse;
   table-layout: fixed;
-  /* Prevent cells from overflowing */
 }
 
 .leaderboard-table th,
 .leaderboard-table td {
   word-wrap: break-word;
-  /* Ensure text wraps within cells */
   padding: 10px;
   text-align: center;
   border: 1px solid #ccc;
@@ -130,7 +124,6 @@ button:active {
   color: #333;
 }
 
-/* Styling the container */
 .name-entry-container {
   margin: 20px auto;
   padding: 20px;
@@ -143,7 +136,6 @@ button:active {
   text-align: center;
 }
 
-/* Styling the label */
 .name-entry-container label {
   display: block;
   font-size: 16px;
@@ -151,7 +143,6 @@ button:active {
   margin-bottom: 10px;
 }
 
-/* Styling the input */
 .name-entry-container input {
   width: 90%;
   padding: 10px;
@@ -168,7 +159,6 @@ button:active {
   border-color: #007bff;
 }
 
-/* Styling the button */
 .name-entry-container button {
   padding: 10px 20px;
   font-size: 16px;
@@ -184,14 +174,14 @@ button:active {
   background-color: #0056b3;
 }
 
-/* Add some responsiveness */
+
 @media (max-width: 600px) {
   .name-entry-container {
     width: 90%;
   }
 }
 
-/* Story container */
+
 .story-container {
   margin: 50px auto;
   padding: 20px;
@@ -204,14 +194,14 @@ button:active {
   font-family: 'Arial', sans-serif;
 }
 
-/* Title styling */
+
 .story-container h2 {
   font-size: 28px;
   color: #333;
   margin-bottom: 20px;
 }
 
-/* Paragraph styling */
+
 .story-container p {
   font-size: 16px;
   line-height: 1.6;
@@ -225,7 +215,6 @@ button:active {
   color: #2a7ae4;
 }
 
-/* Separator styling */
 .story-container .separator {
   border: 0;
   height: 1px;
@@ -234,7 +223,6 @@ button:active {
   width: 80%;
 }
 
-/* Button styling */
 .continue-btn {
   padding: 10px 20px;
   font-size: 16px;
@@ -250,7 +238,6 @@ button:active {
   background-color: #0056b3;
 }
 
-/* Add some responsiveness */
 @media (max-width: 600px) {
   .story-container {
     width: 90%;
@@ -266,35 +253,34 @@ button:active {
   }
 }
 
-/* Cockpit container styling */
 .cockpit-container {
   margin: 50px auto;
   padding: 30px;
   max-width: 500px;
   background-color: #1e293b;
-  /* Dark navy background */
+
   border-radius: 15px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   text-align: center;
   font-family: 'Arial', sans-serif;
   color: #ffffff;
-  /* White text */
+
 }
 
-/* Title styling */
+
 .cockpit-title {
   font-size: 28px;
   margin-bottom: 20px;
   color: #00d4ff;
-  /* Bright cyan for the title */
+
 }
 
-/* Button container */
+
 .cockpit-actions {
   margin-top: 20px;
 }
 
-/* Button styling */
+
 .cockpit-btn {
   padding: 12px 25px;
   font-size: 18px;
@@ -318,7 +304,6 @@ button:active {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Add responsiveness */
 @media (max-width: 600px) {
 
   .cockpit-container {
@@ -336,45 +321,43 @@ button:active {
   }
 }
 
-/* Map Section Container */
 .map-container {
   padding: 30px;
   max-width: 900px;
   margin: 50px auto;
   background-color: #eef6fc;
-  /* Light blue resembling a map */
+
   border-radius: 15px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   text-align: center;
   font-family: 'Arial', sans-serif;
 }
 
-/* Title Styling */
+
 .map-title {
   font-size: 24px;
   color: #2c3e50;
   margin-bottom: 20px;
 }
 
-/* Grid Layout for Countries */
+
 .country-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  /* 5 columns per row */
+ 
   gap: 15px;
-  /* Space between buttons */
+
   padding: 20px;
   justify-content: center;
 }
 
-/* Country Buttons */
 .country-btn {
   padding: 15px;
   font-size: 14px;
   text-align: center;
   color: #fff;
   background: linear-gradient(135deg, #00796b, #004d40);
-  /* Teal gradient */
+
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -384,7 +367,7 @@ button:active {
 
 .country-btn:hover {
   transform: scale(1.05);
-  /* Slight zoom on hover */
+
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
 }
 
@@ -393,7 +376,6 @@ button:active {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* Back Button */
 .map-back-btn {
   margin-top: 20px;
   padding: 12px 25px;
@@ -401,7 +383,7 @@ button:active {
   font-weight: bold;
   color: #fff;
   background: #0288d1;
-  /* Light blue for back button */
+
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -410,7 +392,7 @@ button:active {
 
 .map-back-btn:hover {
   background: #0277bd;
-  /* Darker blue */
+
   transform: translateY(-2px);
 }
 
@@ -419,7 +401,6 @@ button:active {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .map-container {
     width: 90%;
@@ -428,7 +409,7 @@ button:active {
 
   .country-grid {
     grid-template-columns: repeat(3, 1fr);
-    /* 3 columns per row on smaller screens */
+  
     gap: 10px;
   }
 
@@ -443,12 +424,11 @@ button:active {
   }
 }
 
-/* Styling for country buttons */
 .country-btn {
   padding: 10px 15px;
   margin: 5px;
   background-color: #4CAF50;
-  /* Default button color */
+
   color: white;
   border: none;
   border-radius: 5px;
@@ -458,22 +438,21 @@ button:active {
   display: inline-block;
 }
 
-/* Styling for visited countries */
+
 .country-btn.visited {
   text-decoration: line-through;
-  /* Adds a line through the name */
+ 
   background-color: #ccc;
-  /* Change the color of the button for visited countries */
+
   color: #333;
-  /* Optional: change text color */
+ 
 }
 
-/* Styling for when the country is disabled */
 .country-btn:disabled {
   cursor: not-allowed;
-  /* Make the cursor look inactive */
+ 
   opacity: 0.6;
-  /* Make the button look faded */
+
 }
 
 .continue-btn {
@@ -514,17 +493,15 @@ button:active {
   margin-bottom: 20px;
 }
 
-/* Container for the choice buttons */
 .choice-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* Increased spacing between buttons */
+
   margin-bottom: 20px;
-  /* Added margin below the choices */
+
 }
 
-/* Style for each choice button */
 .choice-btn {
   padding: 12px;
   font-size: 16px;
@@ -535,15 +512,13 @@ button:active {
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin: 5px 0;
-  /* Adds vertical margin between buttons */
+
 }
 
 .choice-btn:hover {
   background-color: #45a049;
-  /* Darken the button color on hover */
 }
 
-/* Style for the back button */
 .back-btn {
   padding: 10px 20px;
   font-size: 16px;
@@ -558,10 +533,10 @@ button:active {
 
 .back-btn:hover {
   background-color: #d32f2f;
-  /* Darken the back button color on hover */
+  
 }
 
-/* Country Event Section Styling */
+
 .event-task-section {
   padding: 20px;
   background-color: #f9f9f9;
@@ -571,7 +546,6 @@ button:active {
   margin: 20px;
 }
 
-/* Health Display Styling */
 .health-display {
   margin-top: 20px;
   padding: 10px;
@@ -606,7 +580,6 @@ button:active {
   transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-/* Add some padding and rounded edges to the back button */
 #backToMapBtn {
   padding: 12px 20px;
   font-size: 16px;
@@ -622,10 +595,9 @@ button:active {
   background-color: #e64a19;
 }
 
-/* Game Over Screen */
 .game-over-screen {
   background-color: rgba(0, 0, 0, 0.7);
-  /* Dark translucent background */
+ 
   color: white;
   text-align: center;
   padding: 50px;
@@ -663,7 +635,6 @@ button:active {
   background-color: #006b8f;
 }
 
-/* Fade In Effect */
 .game-over-screen {
   animation: fadeIn 0.5s ease-in;
 }
@@ -681,7 +652,7 @@ button:active {
 
 .antidote-btn {
   background-color: #4CAF50;
-  /* Green for use button */
+
   color: white;
   padding: 10px 20px;
   margin: 10px;
@@ -693,7 +664,6 @@ button:active {
 
 .antidote-btn:hover {
   background-color: #45a049;
-  /* Darker green on hover */
 }
 
 #antidote-buttons-container {
