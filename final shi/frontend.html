@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Game</title>
+    <link rel="stylesheet" href="frontend.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mansalva&family=Pixelify+Sans&family=VT323&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="menu-section" class="menu-section">
+        <button id="startBtn" class="btn">Start Game</button>
+        <button id="leaderboardBtn" class="btn">Leaderboard</button>
+        <button id="quitBtn" class="btn">Quit Game</button>
+    </div>
+    <div id="leaderboard-section" style="display: none;">
+        <div class="leaderboard-container">
+            <div class="leaderboard-header">
+                <h2>Leaderboard</h2>
+                <button id="closeLeaderboardBtn" class="close-btn">&times;</button>
+            </div>
+            <table class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Time</th>
+                        <th>Health</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="name-entry-section" style="display: none;">
+        <div class="name-entry-container">
+            <label for="playerName">Enter your name:</label>
+            <input type="text" id="playerName" placeholder="Your name here">
+            <button id="submitNameBtn">Submit</button>
+        </div>
+    </div>
+    <div id="story" style="display: none;" class="story-container">
+        <h2>Game Start</h2>
+        <p>
+            You have been infected by the deadly <strong>M-3615 Virus!</strong> <br>
+            To survive, you must travel across Europe to collect antidotes. <br>
+            Select a country on the map to travel to. Complete tasks to collect antidotes.
+        </p>
+        <p class="good-luck">
+            <em>Good luck, you will need it.</em>
+        </p>
+        <hr class="separator">
+        <button onclick=backgroundCheck("cockpit") id="storyBtn" class="continue-btn">Continue</button>
+    </div>
+    <div id="cockpit-section" class="cockpit-container" style="display: none;">
+        <h2 class="cockpit-title">Welcome to the Cockpit</h2>
+        <p id="health">Health: 10</p>
+        <p id="antidotes">Antidotes: 0/9</p>
+        <p id="visited">Visited Countries: None</p>
+        <div class="cockpit-actions">
+            <button onclick=backgroundCheck("map") id="mapBtn" class="btn cockpit-btn">Open Map</button>
+        </div>
+    </div>
+    <div id="map-section" class="map-container" style="display: none;">
+        <h3 class="map-title">Select a Country</h3>
+        <div id="country-grid" class="country-grid">
+            <!-- Dynamically populated country buttons will appear here -->
+        </div>
+        <button onclick=backgroundCheck("cockpit") id="backToCockpitBtn" class="btn map-back-btn">Back to Cockpit</button>
+    </div>
+    <div id="country-event-section" class="event-task-section" style="display: none;">
+        <div id="health-display" class="health-display">
+            <p id="health-label">Health:</p>
+            <div id="health-bar">
+                <div id="health-progress"></div>
+            </div>
+        </div>
+        <h3 id="event-title" class="event-title">Country Event/Task</h3>
+        <p id="event-description" class="event-description">Description goes here.</p>
+        <div id="choice-container" class="choice-container"></div>
+        <button onclick= backgroundCheck("map") id="backToMapBtn" class="back-btn">Back to Map</button>
+    </div>
+    <script>
+        function backgroundCheck(status) {
+            if (status === "cockpit") {
+                document.querySelector("body").style.backgroundImage = "url(image_assets/cockpit_bg.png)";
+            } else if (status === "map") {
+                document.querySelector("body").style.backgroundImage = "url(image_assets/map_bg.png)";
+            } else if (status === "airport") {
+                document.querySelector("body").style.backgroundImage = "url(image_assets/airport_bg.png)";
+            } else if (status === "end-bad") {
+                document.querySelector("body").style.backgroundImage = "url(image_assets/lost_bg.png)";
+            } else if (status === "menu") {
+                document.querySelector("body").style.backgroundImage = "url(image_assets/menu_bg.png)";
+            } else {
+                document.querySelector("body").style.backgroundImage = "url(image_assets/menu_bg.png)";
+            }
+        }
+    </script>
+    <script src="frontend.js"></script>
+</body>
+
+</html>
